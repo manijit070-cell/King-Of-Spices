@@ -59,24 +59,28 @@ const MenuSection = () => {
             {menuData[activeTab].map((item, index) => (
               <motion.div 
                 key={item.name} 
-                className="menu-card glass"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
+                className="menu-list-item glass"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
               >
-                <div className="menu-image">
-                  <img src={item.image} alt={item.name} />
+                <div className="menu-item-details">
+                  <div className="diet-indicator">
+                    {item.type === 'veg' ? '🟢' : '🔴'}
+                  </div>
+                  <h3 className="menu-item-title">{item.name}</h3>
+                  <span className="menu-item-price">{item.price}</span>
+                  <p className="menu-item-desc">{item.desc}</p>
                 </div>
-                <div className="menu-card-content">
-                  <div className="menu-card-header">
-                    <h3>{item.name}</h3>
-                    <span className="price text-gradient">{item.price}</span>
-                  </div>
-                  <p>{item.desc}</p>
-                  <div className={`diet-badge ${item.type}`}>
-                    {item.type === 'veg' ? '🟢 Veg' : '🔴 Non-Veg'}
-                  </div>
+                
+                <div className="menu-item-image-wrapper">
+                  <img 
+                    src={item.image} 
+                    alt={item.name} 
+                    onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80'; }}
+                  />
+                  <button className="add-btn">ADD</button>
                 </div>
               </motion.div>
             ))}

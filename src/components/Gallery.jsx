@@ -35,7 +35,11 @@ const Gallery = () => {
               transition={{ delay: i * 0.1 }}
               whileHover={{ scale: 1.05, zIndex: 10 }}
             >
-              <img src={src} alt={`Gallery item ${i + 1}`} />
+              <img 
+                src={src} 
+                alt={`Gallery item ${i + 1}`} 
+                onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'; }}
+              />
             </motion.div>
           ))}
         </div>
