@@ -1,13 +1,14 @@
 /* src/index.css */
 :root {
-  --bg-color: #050505;
-  --text-primary: #f8f8f8;
-  --text-secondary: #a0a0a0;
-  --accent-primary: #ffaa00; /* Warm saffron/gold */
-  --accent-secondary: #0088ff; /* LED blue from images */
-  --glass-bg: rgba(20, 20, 20, 0.6);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --bg-color: #1A0B12; /* Deep dark velvet */
+  --surface-color: #2D131C;
+  --text-primary: #FDFBF7; /* Ivory */
+  --text-secondary: #DBCAC1;
+  --accent-primary: #D4AF37; /* Royal Gold */
+  --accent-secondary: #8B0000; /* Deep Burgundy */
+  --glass-bg: rgba(45, 19, 28, 0.7);
+  --glass-border: rgba(212, 175, 55, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -24,6 +25,9 @@ body {
   color: var(--text-primary);
   overflow-x: hidden;
   min-height: 100vh;
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -40,21 +44,14 @@ a {
 /* Utilities */
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
 }
 
 .text-gradient {
-  background: linear-gradient(45deg, var(--accent-primary), #ffdd66);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-blue {
-  background: linear-gradient(45deg, var(--accent-secondary), #00eeff);
+  background: linear-gradient(45deg, var(--accent-primary), #FFD700);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -63,7 +60,13 @@ a {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
 }
 
 .section {
@@ -71,40 +74,33 @@ a {
   position: relative;
 }
 
-/* Canvas styling for 3D */
-.canvas-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none; /* Let clicks pass through if needed, though we might want interaction */
-}
-
 /* Interactive elements */
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 1rem 2rem;
-  border-radius: 50px;
+  border-radius: 4px; /* Sharper edges for luxury feel */
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   cursor: pointer;
   transition: var(--transition-smooth);
   border: none;
   font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
 }
 
 .btn-primary {
-  background: linear-gradient(45deg, var(--accent-primary), #ff8800);
-  color: #000;
-  box-shadow: 0 4px 15px rgba(255, 170, 0, 0.4);
+  background: var(--accent-primary);
+  color: #1A0B12;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 170, 0, 0.6);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+  background: #FFD700;
 }
 
 /* Custom Scrollbar */
