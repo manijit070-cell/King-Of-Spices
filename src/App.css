@@ -432,10 +432,26 @@
 
 .menu-tabs {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
   gap: 1rem;
   margin-bottom: 3rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.menu-tabs::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+@media (min-width: 768px) {
+  .menu-tabs {
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
 }
 
 .menu-tab {
@@ -448,6 +464,7 @@
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  flex-shrink: 0;
 }
 
 .menu-tab.active, .menu-tab:hover {
@@ -460,8 +477,15 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-width: 800px;
-  margin: 0 auto;
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
 }
 
 .menu-list-item {
